@@ -1,106 +1,117 @@
 <style>
-    /* Search Section */
-#file-name {
-    margin-top: 10px;
+  /* Search Section */
+  .file-name {
+    margin-top: 20px;
+    margin-bottom: 30px;
     font-weight: 500;
     font-size: 40px;
-    margin-bottom: 10px;
-}
+  }
 
-input {
+  form{
+    border-radius: 20px;
+    padding: 20px;
+    width: 40%;
+    background-color: aliceblue;
+  }
+  form:hover{
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px #283D3B;
+  }
+  input {
     font-size: 20px;
-}
+  }
 
-#search-btn {
+  #search-btn {
     width: 130px;
     height: 30px;
     background-color: rgb(46, 78, 240);
-    color:#fff;
+    color: #fff;
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
     margin-left: 10px;
-}
+  }
 
-#search-btn:hover {
+  #search-btn:hover {
     background-color: #23B5D3;
-}
+  }
 
-p {
+  p {
     font-size: 20px;
-}
+  }
 
-/* Design Table data */
-table {
+  /* Design Table data */
+  table {
     width: 100%;
     margin-bottom: 20px;
     border-collapse: collapse;
-}
+  }
 
-th, td {
+  th,
+  td {
     padding: 8px;
     text-align: left;
     border: 1px solid black;
-}
+  }
 
-thead, tbody {
+  thead,
+  tbody {
     border: 1px solid black;
-}
+  }
 
-.result-container {
+  .result-container {
     width: 90%;
-}
+  }
 
-thead {
+  thead {
     background-color: #283D3B;
     color: #fff;
-}
+  }
 
-tbody {
+  tbody {
     background-color: #EFEFEF;
-}
+  }
 
-.highlight {
+  .highlight {
     background-color: #EAD637;
-}
+  }
 </style>
 
 
 <center class="view-container">
-    <h1 id="file-name"> <%= FileName%> </h1>
+  <h1 class="file-name"> <%= FileName%> </h1>
 
-    <!-- Search Section -->
-    <div id="search-container">
-        <form>
-            <input id="inputText" type="text" placeholder="Search Data...">
-            <button id="search-btn" type="button">Search</button>
-        </form>
-        <div>
-            <p>Total Rows: <%= length %></p>
-        </div>
+  <!-- Search Section -->
+  <div id="search-container">
+    <form>
+      <input id="inputText" type="text" placeholder="Search Data...">
+      <button id="search-btn" type="button">Search</button>
+    </form>
+    <div>
+      <p>Total Rows: <%= length %></p>
     </div>
+  </div>
 
-    <!-- Result Section -->
-    <div class="result-container">
-        <table>
-            <thead>
-                <tr>
-                    <% for(let i of head) { %>
-                        <th> <%= i %></th>
-                    <% } %>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(let row of data) { %>
-                    <tr>
-                        <% for(let i of Object.keys(row)) {%>
-                            <td> <%= row[i]%> </td>
-                        <% } %>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
+  <!-- Result Section -->
+  <div class="result-container">
+    <table>
+      <thead>
+        <tr>
+          <% for(let i of head) { %>
+          <th> <%= i %></th>
+          <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let row of data) { %>
+        <tr>
+          <% for(let i of Object.keys(row)) {%>
+          <td> <%= row[i]%> </td>
+          <% } %>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
 
 </center>
-
