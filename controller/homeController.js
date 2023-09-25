@@ -1,10 +1,13 @@
+// Import necessary modules and models
 const csvFile=require('../models/csv');
 const fs=require('fs');
 const path=require('path');
 
+// Controller function to render the home page
 module.exports.home=async(req,res)=>{
    
     try{
+        // Retrieve a list of uploaded CSV files from the database
         let file=await csvFile.find({});
         return res.render('home',{
             title:'Home',
@@ -15,17 +18,22 @@ module.exports.home=async(req,res)=>{
 }
 };
 
+// Controller function to handle file upload
 module.exports.upload= async(req,res)=>{
     try{
+        // Check if there is no file attached to the request
         if(!req.file){
             return  req.status(400).send("Please upload a file!");
         }
+        // Check if the uploaded file is not of type 'text/csv'
         if(!req.file.mimetype.startsWith('text/csv')){
             return res.status(400).send('Please selcet CSV files only!');
         }
     } catch (error) {
         console.log('Error in uploading files', error);
     }
+    
+    // Destructure properties from the uploaded file
     const { originalname , path , filename } = req.file;
 
     const file = await csvFile.create({
@@ -40,7 +48,6 @@ module.exports.upload= async(req,res)=>{
 
 module.exports.delete = async (req ,res) => {
     try {
-      // console.log("Params ", req.params);
 
       // Find the file by it's ID
         let isFile = await csvFile.findById(req.params.id);
