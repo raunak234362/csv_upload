@@ -41,7 +41,7 @@ npm start
 
 ## Usage
 
-- Access the application by navigating to `http://localhost:3000` in your web browser.
+- Access the application by navigating to `http://localhost:8000` in your web browser.
 
 - You can upload CSV files containing data that you want to process and store in the MongoDB database.
 
